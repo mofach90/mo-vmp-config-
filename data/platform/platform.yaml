@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=../../schema/platform.schema.json
+# $schema: ../../schema/platform.schema.json
+
+apiVersion: mo-vm-platform/v1
+kind: PlatformConfig  
+platformCentralProjectID: "x"
+
