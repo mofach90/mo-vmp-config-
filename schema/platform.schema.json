@@ -1,0 +1,22 @@
+{
+  "$id": "",
+  "title": "Environment",
+  "description": "Konfiguration fuer VMP Plattformprojekte.",
+  "type": "object",
+
+  "properties": {
+    "apiVersion": {
+      "const": "mo-vm-platform/v1",
+      "description": "Version dieses Konfigurationsdokuments"
+    },
+    "kind": {
+      "const": "PlatformConfig",
+      "description": "Art des beschriebenen Objekts, Environment"
+    },
+    "platformCentralProjectID": {
+      "const": "x",
+      "description": "Art des beschriebenen Objekts, Environment"
+    }
+  },
+    "required": ["apiVersion", "kind", "platformCentralProjectID"]
+}
