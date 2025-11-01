@@ -3,5 +3,5 @@
 
 apiVersion: mo-vm-platform/v1
 kind: PlatformConfig  
-platformCentralProjectID: "x"
+platformCentralProjectID: "mo-vm-plattform"
 

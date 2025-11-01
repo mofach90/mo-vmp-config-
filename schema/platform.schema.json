@@ -14,7 +14,7 @@
       "description": "Art des beschriebenen Objekts, Environment"
     },
     "platformCentralProjectID": {
-      "const": "x",
+      "const": "mo-vm-plattform",
       "description": "Art des beschriebenen Objekts, Environment"
     }
   },
