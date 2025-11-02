@@ -1,5 +1,5 @@
 {
-  "$id": "",
+  "$id": "mo-vm-platform/v1/platform.schema.json",
   "title": "Environment",
   "description": "Konfiguration fuer VMP Plattformprojekte.",
   "type": "object",

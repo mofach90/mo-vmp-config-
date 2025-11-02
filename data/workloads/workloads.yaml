@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=../../schema/workloadList.schema.json
+# $schema: ../../schema/workloadList.schema.json
+apiVersion: mo-vm-platform/v1
+kind: WorkloadList  
+workloads:
+  mo-vm-plattform:
+    createTime: "2025-10-29T08:00:24.835317Z"
+    labels:
+      name: mo-vm-plattform 
+      network_zone: nonprod
+      project_type: workload
+      stage: dev
+    lifecycleState: ACTIVE
+    name: mo-vm-plattform
+    projectId: mo-vm-plattform 
+    projectNumber: "425661473129"
+    vmpKmsCreate: false
+    vmpKmsUse: false
+  mo-vm-plattform-artifacts:
+    createTime: "2025-10-27T09:29:35.733388Z"
+    labels:
+      name: mo-vm-plattform-artifacts
+      network_zone: nonprod
+      project_type: workload
+      stage: dev
+    lifecycleState: ACTIVE
+    name: mo-vm-plattform-artifacts
+    projectId: mo-vm-plattform-artifacts
+    projectNumber: "644822199623"
+    vmpKmsCreate: false
+    vmpKmsUse: false
+  

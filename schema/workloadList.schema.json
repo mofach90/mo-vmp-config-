@@ -1,0 +1,143 @@
+{
+  "$id": "",
+  "title": "Environment",
+  "description": "Konfiguration fuer VMP Plattformprojekte.",
+  "type": "object",
+
+  "properties": {
+    "apiVersion": {
+      "const": "mo-vm-platform/v1",
+      "description": "Version dieses Konfigurationsdokuments"
+    },
+    "kind": {
+      "const": "WorkloadList",
+      "description": "Art des beschriebenen Objekts, Environment"
+    },
+    "workloads": {
+      "additionalProperties": {
+        "$ref": "#/schemas/workload"
+      }
+    }
+  },
+ "required": ["apiVersion", "kind", "workloads"],
+  "additionalProperties": false,
+  "schemas": {
+    "domain": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9\\.-]+[a-z0-9]$"
+    },
+    "domains": {
+      "type": "array",
+      "items": {
+        "$ref": "#/schemas/domain"
+      }
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "emails": {
+      "type": "array",
+      "items": {
+        "$ref": "#/schemas/email"
+      }
+    },
+    "environment": {
+      "description": "Das Environment bezeichnet die Umgebung, zu welcher das Projekt zugeordnet wird dev, test oder prod",
+      "default": "test",
+      "enum": ["dev", "test", "prod"]
+    },
+    "gceName": {
+      "type": "string",
+      "pattern": "^[a-z][-a-z0-9]{4,28}[a-z0-9]{1}$"
+    },
+    "ip4": {
+      "type": "string",
+      "format": "ipv4"
+    },
+    "ip6": {
+      "type": "string",
+      "format": "ipv6"
+    },
+    "labels": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Zusätzliche label",
+      "type": "object"
+    },
+    "labelTypes": {
+      "key": {
+        "type": "string",
+        "pattern": "^[a-z][-_a-z0-9]{0,61}[a-z0-9]{1}$"
+      },
+      "value": {
+        "type": "string",
+        "pattern": "^[-_a-z0-9]{0,63}$"
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z][-a-z0-9]{1,18}[a-z0-9]{1}$",
+          "description": "Name des workloads. Muss nicht eindeutig sein. Wird in Ressourcennamen verwendet."
+        },
+        "labels": {
+          "$ref": "#/schemas/labels"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "projectId": {
+      "type": "string",
+      "pattern": "^[a-z][-a-z0-9]{4,28}[a-z0-9]{1}$"
+    },
+    "workload": {
+      "type": "object",
+      "description": "Workload project information relevant for central use",
+      "additionalProperties": true,
+      "properties": {
+        "projectNumber": {
+          "description": "Google Cloud Project number as can be retrieved from the project dashboard",
+          "type": "string",
+          "pattern": "\\d{6,}"
+        },
+        "vmpKmsCreate": {
+          "$ref": "#/schemas/vmpKmsCreate"
+        },
+        "vmpKmsUse": {
+          "$ref": "#/schemas/vmpKmsUse"
+        },
+        "labels": {
+          "$ref": "#/schemas/labels"
+        },
+        "prefixOverride": {
+          "type": "string",
+          "description": "Override the default prefix for downwards compatibility",
+          "pattern": "ps[a-z]-[np]"
+        }
+      },
+      "required": ["projectNumber"]
+    },
+    "zone": {
+      "description": "GCP zone to use for the disk/instance",
+      "type": "string",
+      "pattern": "^europe-west[0-9]-[a-c]$"
+    },
+    "vmpKmsCreate": {
+      "type": "boolean",
+      "default": false,
+      "description": "Soll fuer diese Umgebung ueber Terraform ein KMS Schluessel verwaltet werden."
+    },
+    "vmpKmsUse": {
+      "type": "boolean",
+      "default": false,
+      "description": "Soll fuer diese Umgebung der selbst verwaltete KMS Schluessel verwendet werden? Falls `false`, wird der vom zentralen Team verwaltete Schluessel verwendet"
+    }
+  }
+}
